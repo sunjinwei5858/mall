@@ -1,6 +1,7 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.macro.mall.common.constant.DeleteStatus;
 import com.macro.mall.common.constant.NoteEnum;
 import com.macro.mall.common.constant.OperateMan;
 import com.macro.mall.common.constant.OrderStatus;
@@ -63,7 +64,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     @Override
     public int close(List<Long> ids, String note) {
         OmsOrder record = new OmsOrder();
-        record.setStatus(4);
+        record.setStatus(OrderStatus.CLOSED.getCode());
         OmsOrderExample example = new OmsOrderExample();
         example.createCriteria().andDeleteStatusEqualTo(0).andIdIn(ids);
         int count = orderMapper.updateByExampleSelective(record, example);
@@ -83,7 +84,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     @Override
     public int delete(List<Long> ids) {
         OmsOrder record = new OmsOrder();
-        record.setDeleteStatus(1);
+        record.setDeleteStatus(DeleteStatus.ALREADY_DELETED.getCode());
         OmsOrderExample omsOrderExample = new OmsOrderExample();
         OmsOrderExample.Criteria criteria = omsOrderExample.createCriteria();
         criteria.andDeleteStatusEqualTo(OrderStatus.WAIT_PAY.getCode()).andIdIn(ids);

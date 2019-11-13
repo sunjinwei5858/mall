@@ -514,7 +514,7 @@ public class OmsOrder implements Serializable {
         sb.append(", integrationAmount=").append(integrationAmount);
         sb.append(", couponAmount=").append(couponAmount);
         sb.append(", discountAmount=").append(discountAmount);
-        sb.append(", payType=").append(payType);
+        sb.append(", PayType=").append(payType);
         sb.append(", sourceType=").append(sourceType);
         sb.append(", status=").append(status);
         sb.append(", orderType=").append(orderType);
