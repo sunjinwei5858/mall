@@ -35,6 +35,7 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
     public int delete(List<Long> ids) {
         OmsOrderReturnApplyExample example = new OmsOrderReturnApplyExample();
         example.createCriteria().andIdIn(ids).andStatusEqualTo(3);
+        example.createCriteria().andIdIn(ids).andStatusEqualTo(3);
         return returnApplyMapper.deleteByExample(example);
     }
 
